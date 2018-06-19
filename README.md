@@ -21,3 +21,35 @@ Setup a working directory. In my case: `/Users/snd/org/School/mawk`. Install a v
     
 If typing `mawk` in your terminal on macOS brings up nothing, then you can very likely install it: https://invisible-island.net/mawk/ or https://formulae.brew.sh/formula/mawk. I just used homebrew: `brew install mawk`. And that's really all that's required for setting up.
 
+
+## Running scripts
+
+Put the following data in `emp.data`:
+
+        Beth 4.00 0 
+        Dan 3.75 0 
+        Kathy 4.00 10 
+        Mark 5.00 20 
+        Mary 5.50 22 
+        Susie 4.25 18
+
+
+Put the following awk code in a file called `chapter1.awk`:
+
+        $3 > 0 {print$1, $2*$3}
+
+Run the following command in the terminal:
+
+        mawk -f chapter1.awk < emp.data
+
+And you should see this result:
+
+        Kathy 40
+        Mark 100
+        Mary 121
+        Susie 76.5
+
+
+
+
+
