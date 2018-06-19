@@ -6,7 +6,7 @@ This is a repository for notes, code, and other things resulting from going thro
 
 ## Setup
 
-Setup a working directory. In my case: `/Users/snd/org/School/mawk`. Install a version of awk you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk:
+Setup a working directory. In my case: `/Users/snd/org/School/mawk`. Install a version of awk that you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk. Use `mawk -W version` to look at the version:
 
     snd:mawk snd$ mawk -W version
     mawk 1.3.4 20171017
@@ -19,5 +19,5 @@ Setup a working directory. In my case: `/Users/snd/org/School/mawk`. Install a v
     sprintf buffer      8192
     maximum-integer     2147483647
     
-If typing `mawk` in your terminal on macOS, then you can very likely install it: https://invisible-island.net/mawk/ or https://formulae.brew.sh/formula/mawk. I just used homebrew: `brew install mawk`. And that's really all that's required for setting up.
+If typing `mawk` in your terminal on macOS brings up nothing, then you can very likely install it: https://invisible-island.net/mawk/ or https://formulae.brew.sh/formula/mawk. I just used homebrew: `brew install mawk`. And that's really all that's required for setting up.
 
