@@ -216,8 +216,19 @@ the average number of hours is %.2f\n",
 pay, pay/NR, hours, hours/NR}' emp.data
 ```
 
+Here's how to find and print the highest rate
 
+```{bash}
+mawk '$2 > maxrate {maxrate = $2; maxemp = $1} END {
+print "highest hourly rate:", maxrate, "for", maxemp}' emp.data
+```
 
+and hours
+
+```{bash}
+mawk '$3 > maxhours {maxhours = $3; maxemp = $1} END {
+print "highest hours:", maxhours, "for", maxemp}' emp.data
+```
 
 
 
