@@ -189,7 +189,32 @@ mawk 'BEGIN {print "NAME RATE HOURS"}{print}' emp.data
 
 ## 1.5 Computing with awk
 
+Here's how to count the number of people who worked. Remember it should be 4.
 
+```{bash}
+mawk '$3 > 0' emp.data
+```
+
+```{bash}
+mawk '$3 > 0 {emp += 1} END {print emp}' emp.data
+```
+
+Or, what fraction of the total employees worked more than 0 hours?
+
+```{bash}
+mawk '$3 > 0 {emp += 1} END {print emp / NR}' emp.data
+```
+
+Using these ideas, you can easily print the total amount paid out to the people in `emp.data`, the average pay, and the total and average number of hours worked.
+
+```{bash}
+mawk '{pay = pay + $2 * $3; hours = hours + $3} END {
+printf "the total pay is %.2f\n\
+the average pay is %.2f\n\
+the total number of hours is %.2f\n\
+the average number of hours is %.2f\n",
+pay, pay/NR, hours, hours/NR}' emp.data
+```
 
 
 
