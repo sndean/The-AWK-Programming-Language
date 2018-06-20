@@ -5,7 +5,14 @@ date: "6/19/2018"
 output: pdf_document
 ---
 
+
+
 # AWK
+
+
+
+
+
 
 ## 1.1 Getting started
 
@@ -33,6 +40,15 @@ As you may be able to see from the above two examples, most of the awk programs 
 
 
 
+
+
+
+
+
+
+
+
+
 ## 1.2 Simple output
 
 In the first code chunk, I wrote `cat emp.data`. The awk equivalent is
@@ -55,6 +71,124 @@ mawk '{print $1, $3}' emp.data
 ```
 
 Note that comma between field 1 and 3 is semirequired. See the output without the comma.
+
+```{bash}
+mawk '{print NF, $1, $NF}' emp.data
+```
+
+`NF` can be used here as an alternative to `$3`, where awk counts the number of fields for every line, which yields a 3 to start every column. 
+
+Another built in variable is `NR`
+
+```{bash}
+mawk '{print NR, $1}' emp.data
+```
+
+This, paired with `$1` outputs the line number with every name. You can also adjust the output by adding text
+
+```{bash}
+mawk '{print "The total pay for", $1, "is", $2 * $3}' emp.data
+```
+
+
+
+
+
+
+
+
+
+## 1.3 Fanicer output
+
+This printing can be made fanicer by using `printf`
+
+```{bash}
+mawk '{printf "The total pay for %-5s is $%6.2f \n", $1, $2 * $3}' emp.data
+```
+
+If you have any experience with C's `printf` (and many other similar `printf`s), you can do the same here with awk. Adjust the justification, number of digits before and after the decimal, etc.
+
+
+
+Awk doesn't need to be used in isolation. If you want to use `sort` pipe it to `sort`
+
+```{bash}
+mawk '{printf "$%6.2f %s\n", $2 * $3, $1}' emp.data | sort
+```
+
+
+
+
+
+
+
+
+## 1.4 Selection
+
+
+The people that worked 20 or more hours
+
+```{bash}
+mawk '$3 >= 20' emp.data 
+```
+
+The people that were paid more than $50
+
+```{bash}
+mawk '$2 * $3 > 50 {printf "%s made more than $50: $%-6.2f\n", $1, $2 * $3}' emp.data 
+```
+
+
+You can do more than just select based on numbers. Here's characters
+
+```{bash}
+mawk '$1 == "Mark"' emp.data 
+```
+
+and using regular expressions
+
+```{bash}
+mawk '/Ma/' emp.data
+```
+
+`||` is *or* `&&` is *and*
+
+```{bash}
+mawk '/Ma/ || /th/' emp.data
+```
+
+```{bash}
+mawk '/Ma/ && $3 > 21' emp.data
+```
+
+You can also use these for data validation. E.g., you can't be paid negative dollars, work negative hours, or have more fields than 3 (in this case). Here's that implemented in awk
+
+```{bash}
+mawk 'NF != 3 || $2 < 0 || $3 < 0' emp.data
+```
+
+Since there's no errors, there's no output. To make sure this is the case. I'll make `emp_error.data`.
+
+```{bash}
+mawk 'NF != 3 || $2 < 0 || $3 < 0' emp_error.data
+```
+
+
+In addition to `NF` and `NR`, there's `BEGIN` and `END`
+
+```{bash}
+mawk 'BEGIN {print "NAME RATE HOURS"}{print}' emp.data
+```
+
+
+
+
+
+
+
+
+## 1.5 Computing with awk
+
 
 
 
