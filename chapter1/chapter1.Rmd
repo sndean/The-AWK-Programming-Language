@@ -1,0 +1,76 @@
+---
+title: "chapter1"
+author: "snd"
+date: "6/19/2018"
+output: pdf_document
+---
+
+# AWK
+
+## 1.1 Getting started
+
+Here's a list of employees, pay rate, and hours worked
+
+```{bash}
+cat emp.data
+```
+
+
+Calculating pay for people who worked > 0 hours
+
+```{bash}
+mawk '$3 > 0 {print $1, $2*$3}' emp.data
+```
+
+The people who didn't work
+
+```{bash}
+mawk '$3 == 0 {print $1}' emp.data
+```
+
+
+As you may be able to see from the above two examples, most of the awk programs we'll be writing have a certain set up: `pattern {action}`, where we have a pattern that we match (e.g., the 3rd field is `0`) and then an action based on those rows that match the pattern.
+
+
+
+## 1.2 Simple output
+
+In the first code chunk, I wrote `cat emp.data`. The awk equivalent is
+
+```{bash}
+mawk '{print}' emp.data
+```
+
+`print $0` will also print the whole line
+
+
+```{bash}
+mawk '{print $0}' emp.data
+```
+
+Now without the pay rate
+
+```{bash}
+mawk '{print $1, $3}' emp.data
+```
+
+Note that comma between field 1 and 3 is semirequired. See the output without the comma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
