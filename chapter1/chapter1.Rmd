@@ -230,6 +230,42 @@ mawk '$3 > maxhours {maxhours = $3; maxemp = $1} END {
 print "highest hours:", maxhours, "for", maxemp}' emp.data
 ```
 
+You can concatenate the values in columns
+
+```{bash}
+mawk '{names = names $1 " "} END {print names}' emp.data
+mawk '{names = names $1 "\n"} END {print names}' emp.data
+```
+
+```{bash}
+mawk '{names = names $2 " "} END {print names}' emp.data
+mawk '{names = names $2 "\n"} END {print names}' emp.data
+```
+
+Print the last column of the last line like so
+
+```{bash}
+mawk 'END {print $NF}' emp.data
+```
+
+Or the whole last line
+
+```{bash}
+mawk '{last = $0} END {print last}' emp.data
+```
+
+or simply do this
+
+```{bash}
+mawk 'END {print $0}' emp.data
+```
+
+
+Or the 3rd line
+
+```{bash}
+mawk 'NR == 3 {print $0}' emp.data
+```
 
 
 
@@ -239,6 +275,7 @@ print "highest hours:", maxhours, "for", maxemp}' emp.data
 
 
 
+## 1.6 Control-flow statements
 
 
 
