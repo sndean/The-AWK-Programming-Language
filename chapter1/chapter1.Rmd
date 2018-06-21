@@ -284,6 +284,8 @@ mawk '{print $1, length($1)}' emp.data
 
 ## 1.6 Control-flow statements
 
+Relatively straightforward `if else`
+
 ```{bash}
 mawk '$2 > 4 {num = num + 1; pay = pay + $2 * $3} END {if (num > 0)
     print num, "employees\ntotal pay is", pay,
@@ -293,6 +295,12 @@ mawk '$2 > 4 {num = num + 1; pay = pay + $2 * $3} END {if (num > 0)
 
 ```
 
+Here's the ternary operator in awk: `condition ? statement1 : statement2` 
+
+```{bash}
+mawk '{pay = $2 * $3 }{print $1, pay} END {print "\n"}' emp.data
+mawk '{print ($2 * $3) < 50 ? "low" : "high"}' emp.data
+```
 
 
 
