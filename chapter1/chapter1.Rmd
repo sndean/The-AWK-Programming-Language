@@ -269,6 +269,13 @@ mawk 'NR == 3 {print $0}' emp.data
 
 
 
+Other built-in functions include `length`
+
+```{bash}
+mawk '{print $1, length($1)}' emp.data
+```
+
+
 
 
 
@@ -276,6 +283,47 @@ mawk 'NR == 3 {print $0}' emp.data
 
 
 ## 1.6 Control-flow statements
+
+```{bash}
+mawk '$2 > 4 {num = num + 1; pay = pay + $2 * $3} END {if (num > 0)
+    print num, "employees\ntotal pay is", pay,
+    "\naverage pay is", pay/num
+    else
+    print "no employees are paid more than $4 per hour"}' emp.data
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
