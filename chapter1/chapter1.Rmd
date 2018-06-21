@@ -304,6 +304,7 @@ mawk '{print ($2 * $3) < 50 ? "low" : "high"}' emp.data
 
 
 
+next
 
 
 
