@@ -6,7 +6,7 @@ This is a repository for notes, code, and other things resulting from going thro
 
 ## Setup
 
-Setup a working directory. In my case: `/Users/snd/org/School/mawk`. Install a version of awk that you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk. Use `mawk -W version` to look at the version:
+Setup a working directory. In my case: `/Users/snd/org/GitHub/The-AWK-Programming-Language`. Install a version of awk that you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk. Use `mawk -W version` to look at the version:
 
     snd:mawk snd$ mawk -W version
     mawk 1.3.4 20171017
