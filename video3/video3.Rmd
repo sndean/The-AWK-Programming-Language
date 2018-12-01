@@ -7,3 +7,88 @@ output: html_document
 
 
 
+# Command line basics
+
+## First awk program 
+
+```{bash}
+mawk '{print $2, $1}' ../exercise_files/names.txt
+```
+
+
+```{bash}
+mawk '{print $1, $1}' ../exercise_files/names.txt
+```
+
+
+## Records, fields, etc.
+
+In that first Awk program fields are columns, which are called by the `$` with a number for the first (`$1`) or second (`$2`) columns. 
+
+Records are rows.
+
+As another example. Here we'll pull the second field out of a file:
+
+```{bash}
+mawk '{print $2}' ../exercise_files/dukeofyork.txt
+```
+
+
+line contains "up"
+
+```{bash}
+mawk '/up/{print NF, $0}' ../exercise_files/dukeofyork.txt
+```
+
+
+
+line has six words
+
+```{bash}
+mawk 'NF==6{print NF, $0}' ../exercise_files/dukeofyork.txt
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
