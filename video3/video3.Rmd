@@ -162,6 +162,9 @@ or in `uptime` the number of users is in the 3rd column (comma separated)
 uptime | mawk -F , '{print $3}'
 ```
 
+```{bash}
+ls -rohat | mawk -F ' ' '{print $4, "\t\t", $8}' | sort -n
+```
 
 
 

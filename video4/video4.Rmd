@@ -6,4 +6,11 @@ output: html_document
 ---
 
 
+# Understanding Records and Fields
+
+Understanding rows and columns
+
+```{bash}
+
+```
 
