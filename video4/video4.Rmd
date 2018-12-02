@@ -10,7 +10,19 @@ output: html_document
 
 Understanding rows and columns
 
-```{bash}
 
+```{bash}
+mawk '{FS=" "; print $2}' ../exercise_files/dukeofyork.txt
+```
+
+```{bash}
+mawk 'BEGIN {FS="\n"; RS=""} {name = $1; add = $2; city = $3; 
+                            print name "," add "," city}' ../exercise_files/multiaddress.txt
+```
+
+
+
+```{bash}
+mawk 'BEGIN {OFS=","; ORS="\n"} {print $2, $1}' ../exercise_files/names.txt
 ```
 
