@@ -376,9 +376,20 @@ mawk '{pay = $2 * $3 }{print $1, pay} END {print " "}' emp.data
 mawk '{print ($2 * $3) < 50 ? "low" : "high"}' emp.data
 ```
 
-next, the For statement:
 
-Put this in `interest.awk`
+
+Next, the For statement:
+
+```{bash, eval=FALSE}
+mawk 'BEGIN {
+  for(i = 1; i <= 10; i++)
+    print i
+}'
+```
+
+
+
+As a more useful example, put this code in `interest.awk`
 
 ```{bash, eval=FALSE}
 # interest2 - compute compound interest
@@ -386,7 +397,7 @@ Put this in `interest.awk`
 # output: compounded value at the end of each year
 {
   printf("\t%.2f\n", $1)
-  for (i = 1; i <= $3; i = i + 1)
+  for (i = 1; i <= $3; i++)
     printf("\t%.2f\n", $1 * (1 + $2) ^ i)
 }
 ```
@@ -405,8 +416,25 @@ echo "60000 0.025 10" | mawk -f interest.awk
 
 
 
+## 1.7 Arrays
 
 
+```{bash}
+# reverse - print input in reverse order by line
+mawk '{
+line[NR] = $0} END {
+  for(i = NR; i > 0; i--)
+    print line[i]
+    }' emp.data
+
+```
+
+```{bash}
+mawk '{
+line[NR] = $3} END {
+    print line[4], line[5], line[4] * line[5]
+    }' emp.data
+```
 
 
 
