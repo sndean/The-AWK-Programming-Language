@@ -1,14 +1,12 @@
 ---
 title: "chapter1"
 author: "snd"
-date: "6/19/2018"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output: pdf_document
 ---
 
 
-
 # AWK
-
 
 
 
@@ -49,6 +47,14 @@ As you may be able to see from the above two examples, most of the awk programs 
 
 
 
+
+
+
+
+
+
+
+
 ## 1.2 Simple output
 
 In the first code chunk, I wrote `cat emp.data`. The awk equivalent is
@@ -76,7 +82,7 @@ Note that comma between field 1 and 3 is semirequired. See the output without th
 mawk '{print NF, $1, $NF}' emp.data
 ```
 
-`NF` can be used here as an alternative to `$3`, where awk counts the number of fields for every line, which yields a 3 to start every column. 
+`NF` counts the number of fields for every line, which yields a 3 to start every column. 
 
 Another built in variable is `NR`
 
@@ -89,6 +95,20 @@ This, paired with `$1` outputs the line number with every name. You can also adj
 ```{bash}
 mawk '{print "The total pay for", $1, "is", $2 * $3}' emp.data
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,6 +143,15 @@ mawk '{printf "$%6.2f %s\n", $2 * $3, $1}' emp.data | sort
 
 
 
+
+
+
+
+
+
+
+
+
 ## 1.4 Selection
 
 
@@ -135,7 +164,7 @@ mawk '$3 >= 20' emp.data
 The people that were paid more than $50
 
 ```{bash}
-mawk '$2 * $3 > 50 {printf "%s made more than $50: $%-6.2f\n", $1, $2 * $3}' emp.data 
+mawk '$2 * $3 > 50 {printf "%s made more than $50: $%-6.2f\n", $1, $2 * $3}' emp.data | sort
 ```
 
 
@@ -179,6 +208,21 @@ In addition to `NF` and `NR`, there's `BEGIN` and `END`
 ```{bash}
 mawk 'BEGIN {print "NAME RATE HOURS"}{print}' emp.data
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -275,6 +319,27 @@ Other built-in functions include `length`
 mawk '{print $1, length($1)}' emp.data
 ```
 
+which is the length of the string in each row in column 1 (names).
+
+
+```{bash}
+mawk '/Ma/{print length($1)}' emp.data
+```
+
+Both of the Ma-containing names are of length 4.
+
+
+```{bash}
+mawk '{l = l + length($1)} END {print l / NR}' emp.data
+```
+
+The average name length is 4.16667 (which is 25 / 6).
+
+
+
+
+
+
 
 
 
@@ -292,19 +357,46 @@ mawk '$2 > 4 {num = num + 1; pay = pay + $2 * $3} END {if (num > 0)
     "\naverage pay is", pay/num
     else
     print "no employees are paid more than $4 per hour"}' emp.data
-
 ```
+
+```{bash}
+mawk '$2 > 5.5 {num = num + 1; pay = pay + $2 * $3} END {if (num > 0)        # 5.5
+    print num, "employees\ntotal pay is", pay,
+    "\naverage pay is", pay/num
+    else
+    print "no employees are paid more than $5.5 per hour"}' emp.data
+```
+
+
 
 Here's the ternary operator in awk: `condition ? statement1 : statement2` 
 
 ```{bash}
-mawk '{pay = $2 * $3 }{print $1, pay} END {print "\n"}' emp.data
+mawk '{pay = $2 * $3 }{print $1, pay} END {print " "}' emp.data
 mawk '{print ($2 * $3) < 50 ? "low" : "high"}' emp.data
 ```
 
+next, the For statement:
 
+Put this in `interest.awk`
 
-next
+```{bash, eval=FALSE}
+# interest2 - compute compound interest
+# input: amount rate years
+# output: compounded value at the end of each year
+{
+  printf("\t%.2f\n", $1)
+  for (i = 1; i <= $3; i = i + 1)
+    printf("\t%.2f\n", $1 * (1 + $2) ^ i)
+}
+```
+
+Then run with an `echo`d input
+
+```{bash}
+echo "60000 0.025 10" | mawk -f interest.awk
+```
+
 
 
 
