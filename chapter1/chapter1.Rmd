@@ -444,6 +444,52 @@ line[NR] = $3} END {
 
 
 
+## 1.8 A Handful of Useful "One-liners"
+
+
+Number of lines
+
+```{bash}
+mawk 'END {print NR}' emp.data
+```
+
+
+
+
+Print last row
+
+```{bash}
+mawk '{print $NR}' emp.data
+```
+
+
+
+Print largest value of the second column and the line that contains it
+
+```{bash}
+mawk '{print $0}' emp.data
+```
+
+
+```{bash}
+mawk '$2>max {max = $2; maxline = $0} END {print max, maxline}' emp.data
+```
+
+
+Print every line after erasing the 3rd field 
+
+```{bash}
+mawk '{$3 = ""; print}' emp.data
+```
+
+
+
+
+
+```{bash}
+mawk '/a/ {nlines = nlines + 1} END {print nlines}' emp.data
+mawk '/a/ || /t/ {nlines = nlines + 1} END {print nlines}' emp.data
+```
 
 
 
@@ -451,7 +497,7 @@ line[NR] = $3} END {
 
 
 
-
+## 1.9 What next?
 
 
 
