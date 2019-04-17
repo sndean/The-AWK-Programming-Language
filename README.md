@@ -6,7 +6,7 @@ This is a repository for notes, code, and other things resulting from going thro
 
 ## Setup
 
-Setup a working directory. In my case: `/Users/snd/org/GitHub/The-AWK-Programming-Language`. Install a version of awk that you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk. Use `mawk -W version` to look at the version:
+Setup a working directory. In my case: `/Users/snd/org/GitHub/mawk-notes`. Install a version of awk that you want to use. In my case, I'm going to go through this tutorial mostly on macOS using mawk. Use `mawk -W version` to look at the version:
 
     snd:mawk snd$ mawk -W version
     mawk 1.3.4 20171017
@@ -20,6 +20,15 @@ Setup a working directory. In my case: `/Users/snd/org/GitHub/The-AWK-Programmin
     maximum-integer     2147483647
     
 If typing `mawk` in your terminal on macOS brings up nothing, then you can very likely install it: https://invisible-island.net/mawk/ or https://formulae.brew.sh/formula/mawk. I just used homebrew: `brew install mawk`. And that's really all that's required for setting up.
+
+Also, as of April 2019, GNU Awk (gawk) version [5.0.0 is available](https://lists.gnu.org/archive/html/info-gnu/2019-04/msg00002.html) and a discussion of it can be found [here](https://news.ycombinator.com/item?id=19671983). If you want to download and install that (see [here](ftp://ftp.gnu.org/gnu/gawk)) much of the notes here will run.
+
+        tar -xpvzf gawk-5.0.0.tar.gz
+        cd gawk-5.0.0
+        ./configure && make && make check
+
+
+
 
 
 ## Running scripts
