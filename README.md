@@ -10,7 +10,7 @@ This is a repository for notes, code, and other things resulting from going thro
  - https://news.ycombinator.com/item?id=20308865
 
  - https://news.ycombinator.com/item?id=21101478
-    - https://web.archive.org/web/20150906053501/http://gregable.com/2010/09/why-you-should-know-just-little-awk.html
+    - https://gregable.com/2010/09/why-you-should-know-just-little-awk.html
 
 
 
