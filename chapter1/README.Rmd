@@ -1,16 +1,4 @@
----
-title: "chapter1"
-author: "snd"
-date: "`r format(Sys.time(), '%d %B %Y')`"
-output: pdf_document
----
-
-
-# AWK
-
-
-
-
+# 1
 
 ## 1.1 Getting started
 

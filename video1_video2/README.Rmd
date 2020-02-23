@@ -4,11 +4,12 @@
 
 ## 01. Introduction
 
-We'll need to have some experience with the command line and have an AWK installed. I'll be using mawk:
+We'll need to have some experience with the command line and have an awk installed. I'll be using mawk:
 
 ```{bash}
 mawk -W v
 ```
+
 
 
 ### Exercise files
