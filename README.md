@@ -4,7 +4,7 @@
 
 This is a repository for notes, code, and other things resulting from going through [The AWK Programming Language](https://ia802309.us.archive.org/25/items/pdfy-MgN0H1joIoDVoIC7/The_AWK_Programming_Language.pdf) (PDF of the book) and [AWK Essential Training](https://daviddlevine.com/2014/05/announcing-the-release-of-awk-essential-training-at-lynda-com/). I thought to work my way through this book and course because of several Hacker News threads, including [this thread relating to the book](https://news.ycombinator.com/item?id=17140934) and [this thread on awk's usefulness more generally](https://news.ycombinator.com/item?id=17322412). This blog post [Don’t MAWK AWK – the fastest and most elegant big data munging language!](http://brenocon.com/blog/2009/09/dont-mawk-awk-the-fastest-and-most-elegant-big-data-munging-language/) and related [github repo](https://github.com/brendano/awkspeed) directed me toward mawk in particular.
 
-Also, awk seems to show up on HN pretty often: [Awk by Example](https://news.ycombinator.com/item?id=20308865), [Learn Just a Little Awk (2010)](https://news.ycombinator.com/item?id=21101478).
+Awk seems to show up on HN pretty often: [Awk by Example](https://news.ycombinator.com/item?id=20308865), [Learn Just a Little Awk (2010)](https://news.ycombinator.com/item?id=21101478).
 
 ## Setup
 
